@@ -1,0 +1,236 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>programming | git识记 | Home of Nadine</title>
+<link rel="shortcut icon" href="https://nadineAug.github.io/favicon.ico?v=1710165087728">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://nadineAug.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="programming | git识记 | Home of Nadine - Atom Feed" href="https://nadineAug.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="参考 https://gitee.com/mvphp/gitee_yes
+gitee基础操作
+配置SSH公钥
+使用git进行项目版本控制常用github或gitee，gitee不用翻墙，从零开始的第一步是配置SSH公钥。具体步骤如下：
+1...." />
+    <meta name="keywords" content="programming" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://nadineAug.github.io">
+  <img class="avatar" src="https://nadineAug.github.io/images/avatar.png?v=1710165087728" alt="">
+  </a>
+  <h1 class="site-title">
+    Home of Nadine
+  </h1>
+  <p class="site-description">
+    纳丁小屋
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              programming | git识记
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-04-04
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://nadineAug.github.io/tag/uY3j4Nlar/" class="post-tag">
+                  # programming
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://nadineAug.github.io/post-images/programming-or-git-shi-ji.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>参考 https://gitee.com/mvphp/gitee_yes</p>
+<h1 id="gitee基础操作">gitee基础操作</h1>
+<h2 id="配置ssh公钥">配置SSH公钥</h2>
+<p>使用git进行项目版本控制常用github或gitee，gitee不用翻墙，从零开始的第一步是配置SSH公钥。具体步骤如下：<br>
+1.在gitee上注册账户<br>
+2.在本地创建项目文件夹，在该文件夹下右击空白处，点击&quot;Git Bash Here&quot;<br>
+3.在git bash交互界面生成SSHkey，命令如下：</p>
+<pre><code>ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;   #输入个人邮箱
+</code></pre>
+<p><img src="https://nadineAug.github.io/post-images/1680687364323.webp" alt="" loading="lazy"><br>
+4.生成后输入以下命令展示公钥，并自行复制</p>
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre>
+<p>5.回到gitee，点击头像-&gt;设置-&gt;SSH公钥，粘贴公钥并确定。完成公钥配置。</p>
+<h2 id="同步仓库到本地">同步仓库到本地</h2>
+<p>完成公钥配置之后，我们需要将本地与仓库建立连接，并将仓库内容同步到本地。具体步骤如下：<br>
+1.设置用户名与邮箱</p>
+<pre><code>git config --global user.name &quot;您的 Gitee 账户姓名&quot;
+git config --global user.email &quot;您注册/绑定的邮箱地址&quot;
+</code></pre>
+<p>2.在gitee自己的仓库中点击克隆/下载，选择SSH并复制<br>
+3.初始化本地仓库并克隆远程仓库</p>
+<pre><code>git init                                #初始化仓库
+git remote add origin 粘贴复制的SSH地址  #建立远程连接
+git clone 粘贴复制的SSH地址              #克隆远程仓库
+</code></pre>
+<p>此时在本地项目文件夹中可以看到克隆下来的项目。完成同步仓库到本地。</p>
+<h2 id="本地内容更新后同步到仓库">本地内容更新后同步到仓库</h2>
+<p>当本地内容更新后，我们需要同时把仓库内容进行更新。具体步骤如下：<br>
+1.本地文件内容更新，比如增加了文件clean.py，在该文件夹下打开git bash（打开是master分支）<br>
+2.通过以下指令进行数据同步</p>
+<pre><code>git add clean.py             #新增“clean.py”至暂存区
+git commit -m &quot;新纪录&quot;       #确认新增“clean.py”至数据目录
+git push -u origin master   #推送新增文件到远程仓库
+</code></pre>
+<p>引用最上方链接博客中的说明：<br>
+<img src="https://nadineAug.github.io/post-images/1680702633912.webp" alt="" loading="lazy"><br>
+此时完成内容同步。</p>
+<p>？？疑问：需要在更新之前先拉取最新的项目吗？不会覆盖掉自己本地的项目吗？</p>
+<h2 id="过去实践中总结的通用步骤">过去实践中总结的通用步骤</h2>
+<p>1.ssh key添加<br>
+2.git clone (默认是从master上) # 将远程项目克隆到本地<br>
+3.本地创建要上传的项目文件，并通过git bash进入该文件目录<br>
+4.git checkout &quot;分支名&quot;  # 切换到自己的分支 (用git branch &quot;分支名&quot; 来创建分支)<br>
+5.git pull origin &quot;分支名&quot;  # 拉取最新分支<br>
+6.本地项目内容更新了，需要远端同步，git add . (添加当前工作目录文件到index，注意git add *和它是有区别的)  # 添加到暂存区<br>
+7.git commit -m &quot;xxx&quot;  # 将暂存区内容加到数据目录<br>
+8.git push origin &quot;分支名&quot;  # 将本地的分支版本上传到远程并合并</p>
+<p>git add . 会把当前目录及子孙目录里的变动都加到暂存区；而 git add --all 会将项目里所有文件的变动都加到暂存区，也就是说该命令不论在项目的哪级目录执行，都有同样的效果<br>
+git add . 会把本地所有untrack的文件都加入暂存区，并且会根据.gitignore做过滤;git add * 会忽略.gitignore把任何文件都加入.</p>
+<h2 id="git的可视化操作">git的可视化操作</h2>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#gitee%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C">gitee基础操作</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AEssh%E5%85%AC%E9%92%A5">配置SSH公钥</a></li>
+<li><a href="#%E5%90%8C%E6%AD%A5%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0">同步仓库到本地</a></li>
+<li><a href="#%E6%9C%AC%E5%9C%B0%E5%86%85%E5%AE%B9%E6%9B%B4%E6%96%B0%E5%90%8E%E5%90%8C%E6%AD%A5%E5%88%B0%E4%BB%93%E5%BA%93">本地内容更新后同步到仓库</a></li>
+<li><a href="#%E8%BF%87%E5%8E%BB%E5%AE%9E%E8%B7%B5%E4%B8%AD%E6%80%BB%E7%BB%93%E7%9A%84%E9%80%9A%E7%94%A8%E6%AD%A5%E9%AA%A4">过去实践中总结的通用步骤</a></li>
+<li><a href="#git%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E6%93%8D%E4%BD%9C">git的可视化操作</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://nadineAug.github.io/post/programming-or-huan-jing-pei-zhi/">
+              <h3 class="post-title">
+                programming | 环境配置
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://nadineAug.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

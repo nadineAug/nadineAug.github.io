@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>drawing practice | KK幼儿园 | Home of Nadine</title>
+<link rel="shortcut icon" href="https://nadineAug.github.io/favicon.ico?v=1710165087728">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://nadineAug.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="drawing practice | KK幼儿园 | Home of Nadine - Atom Feed" href="https://nadineAug.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="KK幼儿园临摹打卡
+线条练习阶段
+
+
+
+..." />
+    <meta name="keywords" content="drawing practice" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://nadineAug.github.io">
+  <img class="avatar" src="https://nadineAug.github.io/images/avatar.png?v=1710165087728" alt="">
+  </a>
+  <h1 class="site-title">
+    Home of Nadine
+  </h1>
+  <p class="site-description">
+    纳丁小屋
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              drawing practice | KK幼儿园
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-01-09
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://nadineAug.github.io/tag/22qYr_89u/" class="post-tag">
+                  # drawing practice
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="kk幼儿园临摹打卡">KK幼儿园临摹打卡</h1>
+<h2 id="线条练习阶段">线条练习阶段</h2>
+<figure data-type="image" tabindex="1"><img src="https://nadineAug.github.io/post-images/1673232974882.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://nadineAug.github.io/post-images/1674015950002.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://nadineAug.github.io/post-images/1675330518219.jpg" alt="" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#kk%E5%B9%BC%E5%84%BF%E5%9B%AD%E4%B8%B4%E6%91%B9%E6%89%93%E5%8D%A1">KK幼儿园临摹打卡</a>
+<ul>
+<li><a href="#%E7%BA%BF%E6%9D%A1%E7%BB%83%E4%B9%A0%E9%98%B6%E6%AE%B5">线条练习阶段</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://nadineAug.github.io/post/music-or-jiao-xiang-yin-le-shang-xi/">
+              <h3 class="post-title">
+                music | 交响音乐赏析
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://nadineAug.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

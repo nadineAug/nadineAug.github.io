@@ -1,0 +1,280 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>programming | 环境配置 | Home of Nadine</title>
+<link rel="shortcut icon" href="https://nadineAug.github.io/favicon.ico?v=1710165087728">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://nadineAug.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="programming | 环境配置 | Home of Nadine - Atom Feed" href="https://nadineAug.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="在跑项目玩代码之前需要先自己创建一个折腾的环境，自己最开始是使用virtualenv配置虚拟环境（linux里我用的多），后来逐渐转为使用anaconda（windows里我用的多）。下面总结一些总是用到但容易忘的配置步骤。
+Anacond..." />
+    <meta name="keywords" content="programming" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://nadineAug.github.io">
+  <img class="avatar" src="https://nadineAug.github.io/images/avatar.png?v=1710165087728" alt="">
+  </a>
+  <h1 class="site-title">
+    Home of Nadine
+  </h1>
+  <p class="site-description">
+    纳丁小屋
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              programming | 环境配置
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-04-04
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://nadineAug.github.io/tag/uY3j4Nlar/" class="post-tag">
+                  # programming
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://nadineAug.github.io/post-images/programming-or-huan-jing-pei-zhi.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>在跑项目玩代码之前需要先自己创建一个折腾的环境，自己最开始是使用virtualenv配置虚拟环境（linux里我用的多），后来逐渐转为使用anaconda（windows里我用的多）。下面总结一些总是用到但容易忘的配置步骤。</p>
+<h1 id="anaconda相关">Anaconda相关</h1>
+<h2 id="win10-conda安装">win10 conda安装</h2>
+<h3 id="step1">step1</h3>
+<p>参考https://zhuanlan.zhihu.com/p/61639212，但注意测试是否安装成功是在Anaconda prompt （Anaconda Prompt is a command line interface with Anaconda Distribution. 直接搜这个终端 ）</p>
+<h3 id="step2">step2</h3>
+<p>到这里只能说明conda安装完毕，但是环境变量还需要配置三个</p>
+<pre><code>参考   https://blog.csdn.net/moshiyaofei/article/details/103317490#:~:text=%E4%B8%80%E3%80%81%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95,%E7%82%B9%E5%87%BB%E7%A1%AE%E5%AE%9A%E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86%E3%80%82
+
+C:\Users\xx\Anaconda3\Scripts
+C:\Users\xx\Anaconda3\Library\bin
+C:\Users\xx\Anaconda3\Library\mingw-w64\bin
+</code></pre>
+<p>然后在cmd就可以查看版本了 (conda -V)</p>
+<h3 id="step3">step3</h3>
+<pre><code># 创建环境
+conda create --name py35 python=3.5
+
+# 安装好后，使用activate激活某个环境
+activate py35 # for Windows
+（注意：在git bash中，激活需要用source activate xx）
+
+# 如果想返回默认的python 2.7环境，运行
+deactivate py35 # for Windows
+
+# 删除一个已有的环境
+conda remove --name py35 --all
+
+# 查看当前系统中已经安装了哪些环境
+conda info -e
+</code></pre>
+<h2 id="conda安装第三方库">conda安装第三方库</h2>
+<pre><code># 为当前环境安装库，例如 numpy
+conda install numpy
+# conda会从从远程搜索numpy的相关信息和依赖项目
+
+# 查看已经安装的packages
+conda list
+
+# 查看某个指定环境的已安装包
+conda list -n py35
+</code></pre>
+<h2 id="conda安装pytorch">conda安装pytorch</h2>
+<p>参考pytorch官网https://pytorch.org/<br>
+注意要通过nvidia-smi确定cuda版本号<br>
+python版本也有要求（安装的torchvision要与python兼容）</p>
+<h1 id="virtualenv相关">virtualenv相关</h1>
+<p>参考https://www.cnblogs.com/shenjianping/p/10973197.html</p>
+<h2 id="虚拟环境配置步骤">虚拟环境配置步骤</h2>
+<p>1.安装virtualenv（如果server上没有提前安装）（需要关闭代理）</p>
+<pre><code>pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv
+</code></pre>
+<p>2.创建虚拟环境</p>
+<pre><code>virtualenv -p /usr/bin/python3 ''环境名''
+或
+virtualenv -p python3 ''环境名''
+# 不指定版本则使用系统默认版本  
+</code></pre>
+<p>3.激活虚拟环境</p>
+<pre><code>source venv/bin/activate#进入虚拟环境  
+# Windows 系统下运行 source venv/Scripts/activate
+</code></pre>
+<p>4.退出虚拟环境</p>
+<pre><code>deactivate
+</code></pre>
+<h2 id="virtualenv安装pytorch">virtualenv安装pytorch</h2>
+<p>注意：python,torch,torchvision,CUDA版本匹配（CUDA是用于GPU的，如果linux上没有GPU，则安装CPU版本的torch）</p>
+<p>查看linux CUDA版本：</p>
+<pre><code>nvcc -V
+</code></pre>
+<p>具体过程：<br>
+1.创建虚拟环境</p>
+<pre><code>mkvirtualenv --python=python3.6 MLMAN1
+</code></pre>
+<p>2.在官网上（https://pytorch.org/）找到对应CUDA=9.0的版本连接<br>
+3.linux上下载安装（下面这是一行）</p>
+<pre><code>pip install torch===1.0.0 torchvision===0.2.0 -f https://download.pytorch.org/whl/cu90/torch_stable.html
+</code></pre>
+<p>备注：<br>
+查看该版本torch支持的cuda版本</p>
+<pre><code>python
+&gt;&gt;&gt;import torch
+&gt;&gt;&gt;torch.version.cuda
+查看torch版本
+torch.__version__
+查看cuda是否可用
+torch.cuda.is_available()
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#anaconda%E7%9B%B8%E5%85%B3">Anaconda相关</a>
+<ul>
+<li><a href="#win10-conda%E5%AE%89%E8%A3%85">win10 conda安装</a>
+<ul>
+<li><a href="#step1">step1</a></li>
+<li><a href="#step2">step2</a></li>
+<li><a href="#step3">step3</a></li>
+</ul>
+</li>
+<li><a href="#conda%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93">conda安装第三方库</a></li>
+<li><a href="#conda%E5%AE%89%E8%A3%85pytorch">conda安装pytorch</a></li>
+</ul>
+</li>
+<li><a href="#virtualenv%E7%9B%B8%E5%85%B3">virtualenv相关</a>
+<ul>
+<li><a href="#%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4">虚拟环境配置步骤</a></li>
+<li><a href="#virtualenv%E5%AE%89%E8%A3%85pytorch">virtualenv安装pytorch</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://nadineAug.github.io/post/programming-or-bu-quan-ji-hua/">
+              <h3 class="post-title">
+                programming | 补全计划
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://nadineAug.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
